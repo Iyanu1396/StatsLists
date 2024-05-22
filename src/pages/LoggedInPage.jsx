@@ -51,6 +51,7 @@ function LoggedInPage() {
           }
 
           const data = await res.json();
+         
           dispatch(setIsloading(false));
           dispatch(authenticateUser(data));
         } catch (err) {

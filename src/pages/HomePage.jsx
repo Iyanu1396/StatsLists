@@ -6,7 +6,7 @@ function HomePage() {
       <h1 className="animate__animated animate__bounceInLeft pb-10 text-center font-bebas text-3xl font-medium tracking-wide text-green-950 sm:text-5xl">
         Welcome To Spot Lists
         <span>
-          <i className="fa-brands fa-spotify text-green-500 "></i>
+          <i className="fa-brands fa-spotify text-green-500 pl-3"></i>
         </span>{" "}
       </h1>
       <p className=" animate__animated animate__bounceInLeft max-w-[700px] pb-7 text-center   text-green-950 font-mont font-medium">
