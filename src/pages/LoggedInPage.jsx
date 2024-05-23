@@ -5,7 +5,7 @@ import {
   setToken,
   setIsloading,
 } from "../features/authentication/authenticationSlice";
-import Loading from "../components/Loading";
+import Loading from "../components/Loader";
 import UserData from "../components/UserData";
 
 function LoggedInPage() {
@@ -51,9 +51,13 @@ function LoggedInPage() {
           }
 
           const data = await res.json();
-         
+          const userName = data.display_name;
+          const userEmail = data.email;
+          const userID = data.id;
+          const userAvatar = data.images[1].url;
+
           dispatch(setIsloading(false));
-          dispatch(authenticateUser(data));
+          dispatch(authenticateUser(userName, userEmail, userID, userAvatar));
         } catch (err) {
           console.log(err);
         }
@@ -65,7 +69,7 @@ function LoggedInPage() {
   );
 
   return (
-    <div className="min-h-screen bg-stone-200">
+    <div className="min-h-screen bg-stone-200 ">
       <nav className="flex- flex cursor-pointer items-center justify-center gap-3 border-b-2 border-green-500 py-6 font-bebas text-4xl text-green-950 sm:text-5xl">
         <h1>Spot Lists</h1>
         <i className="fa-brands fa-spotify text-green-500 "></i>
@@ -76,3 +80,5 @@ function LoggedInPage() {
 }
 
 export default LoggedInPage;
+
+

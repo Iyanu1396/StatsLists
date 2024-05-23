@@ -4,6 +4,7 @@ export const authenticationSlice = createSlice({
   name: "authentication",
   initialState: {
     userData: null,
+    topArtists:null,
     isLoggedIn: false,
     isLoading: false,
     token: "",
@@ -11,25 +12,44 @@ export const authenticationSlice = createSlice({
     REDIRECT_URI: "http://localhost:5173/app",
     AUTH_ENDPOINT: "https://accounts.spotify.com/authorize",
     RESPONSE_TYPE: "token",
+     SCOPES : 'user-read-private user-read-email user-top-read'
   },
   reducers: {
     login: (state) => {
       (state.isLoggedIn = true),
-        (window.location = `${state.AUTH_ENDPOINT}?client_id=${state.CLIENT_ID}&redirect_uri=${state.REDIRECT_URI}&response_type=${state.RESPONSE_TYPE}&scope=user-read-private user-read-email`);
+      window.location = `${state.AUTH_ENDPOINT}?client_id=${state.CLIENT_ID}&redirect_uri=${state.REDIRECT_URI}&response_type=${state.RESPONSE_TYPE}&scope=${encodeURIComponent(state.SCOPES)}`
     },
     setToken: (state, action) => {
       state.token = action.payload;
     },
-    authenticateUser: (state, action) => {
-      state.userData = action.payload;
+    authenticateUser: {
+      prepare(userName , userEmail , userID , userAvatar){
+        return{
+         
+          payload:{userName,userEmail,userID,userAvatar}
+        }
+      },
+      reducer(state, action){
+        state.isLoggedIn = true,
+         state.userData = {
+          userName: action.payload.userName,
+          userEmail: action.payload.userEmail,
+          userID : action.payload.userEmail,
+          userAvatar : action.payload.userAvatar
+        };
+
+      }
     },
     setIsloading: (state, action) => {
       state.isLoading = action.payload;
     },
+    setTopArtists:(state,action) =>{
+      state.topArtists = action.payload
+    }
   },
 });
 
-export const { login, setToken, authenticateUser , setIsloading } =
+export const { login, setToken, authenticateUser , setIsloading , setTopArtists } =
   authenticationSlice.actions;
 
 export default authenticationSlice.reducer;
