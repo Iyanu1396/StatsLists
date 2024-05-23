@@ -12,7 +12,7 @@ function LoggedInPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const hash = window.location.hash;
+    const hash = window.location.hash
 
     if (hash) {
       const token = hash
