@@ -4,32 +4,39 @@ import {
   setTopArtists,
 } from "../features/authentication/authenticationSlice";
 import { useDispatch, useSelector } from "react-redux";
+import TopArtistsItems from "../components/TopArtistsItems";
+import Loader from "../components/Loader";
 
 function TopArtists() {
-  const { token, isLoading } = useSelector((state) => state.authentication);
+  const { token, isLoading, topArtists } = useSelector(
+    (state) => state.authentication,
+  );
   const dispatch = useDispatch();
 
   useEffect(
     function () {
-      if (!token) return
       async function fetchTopArtists() {
         dispatch(setIsloading(true));
 
         try {
-          const res = await fetch("https://api.spotify.com/v1/me/top/artists?time_range=long_term", {
-            method: "GET",
-            headers: { Authorization: `Bearer ${token}` },
-          });
+          const res = await fetch(
+            "https://api.spotify.com/v1/me/top/artists?time_range=long_term",
+            {
+              method: "GET",
+              headers: { Authorization: `Bearer ${token}` },
+            },
+          );
 
           if (!res.ok) {
             throw new Error("Failed to fetch top artists");
           }
 
           const data = await res.json();
-          console.log(data)
+
+          
 
           dispatch(setIsloading(false));
-          dispatch(setTopArtists(data));
+          dispatch(setTopArtists(data.items));
         } catch (err) {
           console.log(err);
         }
@@ -39,9 +46,15 @@ function TopArtists() {
 
     [dispatch, token],
   );
-  return <div>
-    Top Artists
-  </div>;
+
+  if (isLoading ) return <Loader />;
+  return (
+    <div>
+      <p>Top Artists</p>
+      
+    
+    </div>
+  );
 }
 
 export default TopArtists;
