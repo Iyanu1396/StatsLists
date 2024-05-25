@@ -4,7 +4,6 @@ export const authenticationSlice = createSlice({
   name: "authentication",
   initialState: {
     userData: null,
-    topArtists:null,
     isLoggedIn: false,
     isLoading: false,
     token: "",
@@ -43,13 +42,11 @@ export const authenticationSlice = createSlice({
     setIsloading: (state, action) => {
       state.isLoading = action.payload;
     },
-    setTopArtists:(state,action) =>{
-      state.topArtists = action.payload
-    }
+   
   },
 });
 
-export const { login, setToken, authenticateUser , setIsloading , setTopArtists } =
+export const { login, setToken, authenticateUser , setIsloading  } =
   authenticationSlice.actions;
 
 export default authenticationSlice.reducer;
