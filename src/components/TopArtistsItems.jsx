@@ -6,7 +6,7 @@ function TopArtistsItems() {
   return (
     <div className="grid grid-cols-1 gap-10 font-mont sm:grid-cols-2 md:grid-cols-3   lg:grid-cols-4   ">
       {topArtists?.map((artist) => ( 
-        <div
+        <div 
           className="flex flex-col  items-center px-3 tracking-wide"
           key={artist?.name}
         >
