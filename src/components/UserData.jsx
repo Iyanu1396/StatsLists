@@ -1,14 +1,9 @@
 import { useSelector } from "react-redux";
 import Button from "./Button";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function UserData() {
   const { userData } = useSelector((state) => state.authentication);
-  const navigate = useNavigate();
-
-   function handleClick(){
-    navigate('/top-artists')
-  }
 
   return (
     <div className="flex flex-col items-center justify-center py-10 font-mont text-green-950">
@@ -27,14 +22,19 @@ function UserData() {
               <i className="fa-solid fa-envelope pr-1"></i>
               {userData.userEmail}
             </p>
-            <p  className="font-bold">
+            <p className="font-bold">
               <i className="fa-solid fa-hashtag pr-1"></i>
               {userData.userID}
             </p>
           </div>
-          <div className="flex flex-col gap-4">
-            <Button handleClick={handleClick}>Discover your top streamed artists</Button>
-            <Button>Explore your top streamed tracks</Button>
+          <div className="flex justify-center items-center flex-col gap-4">
+          <Link to="/top-artists">
+            <Button>
+              Discover your top streamed artists
+            </Button></Link>
+           <Link to="/top-tracks"> <Button>
+              Explore your top streamed tracks
+            </Button></Link>
             <Button>Discover your most streamed albums</Button>
             <Button>
               Create a playlist featuring tracks from your most streamed artists

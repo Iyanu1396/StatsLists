@@ -21,3 +21,9 @@
     transform: rotate(1turn);
   }
 }
+
+@media (max-width: 300px) {
+  .grid-cols-1-xs {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}

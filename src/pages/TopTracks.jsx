@@ -1,18 +1,13 @@
-import { useEffect } from "react";
-
 import { useDispatch, useSelector } from "react-redux";
-import TopArtistsItems from "../components/TopArtistsItems";
 import Loader from "../components/Loader";
-import {
-  setIsloading,
-  setTopArtists,
-} from "../features/userData/userDataSlice";
 import Nav from "../components/Nav";
-import { Link } from "react-router-dom";
-import BackToMenu from "../components/BackToMenu"
 
+import BackToMenu from "../components/BackToMenu";
+import { setIsloading, setTopTracks } from "../features/userData/userDataSlice";
+import { useEffect } from "react";
+import TopTracksItems from "../components/TopTracksItems";
 
-function TopArtists() {
+function TopTracks() {
   const { token } = useSelector((state) => state.authentication);
   const storedToken = window.localStorage.getItem("token");
   const { isLoading } = useSelector((state) => state.userData);
@@ -20,12 +15,12 @@ function TopArtists() {
 
   useEffect(
     function () {
-      async function fetchTopArtists() {
+      async function fetchTopTracks() {
         dispatch(setIsloading(true));
 
         try {
           const res = await fetch(
-            "https://api.spotify.com/v1/me/top/artists?time_range=long_term",
+            "https://api.spotify.com/v1/me/top/tracks?time_range=long_term",
             {
               method: "GET",
               headers: { Authorization: `Bearer ${token || storedToken}` },
@@ -37,14 +32,15 @@ function TopArtists() {
           }
 
           const data = await res.json();
+          console.log(data.items);
 
           dispatch(setIsloading(false));
-          dispatch(setTopArtists(data.items));
+          dispatch(setTopTracks(data.items));
         } catch (err) {
           console.log(err);
         }
       }
-      fetchTopArtists();
+      fetchTopTracks();
     },
 
     [dispatch, storedToken, token],
@@ -53,14 +49,15 @@ function TopArtists() {
   if (isLoading) return <Loader />;
   return (
     <div className="min-h-screen bg-stone-200">
-      <Nav/>
-      <h2 className="py-7 tracking-wide text-center font-bebas text-5xl font-medium">
-        Top Artists
+      <Nav />
+      <h2 className="py-7 text-center font-bebas text-5xl font-medium tracking-wide">
+        Top Tracks
       </h2>
-      <TopArtistsItems />
-     <BackToMenu/>
+      <TopTracksItems />
+
+      <BackToMenu />
     </div>
   );
 }
 
-export default TopArtists;
+export default TopTracks;
