@@ -14,7 +14,7 @@ function UserData() {
             src={userData.userAvatar}
             alt=""
           />
-          <div className="py-10 text-center">
+          <div className="py-10 text-center space-y-2">
             <p className="font-bold">
               <i className="fa-solid fa-user pr-1"></i> {userData.userName}
             </p>
@@ -33,7 +33,7 @@ function UserData() {
               Discover your top streamed artists
             </Button></Link>
            <Link to="/top-tracks"> <Button>
-              Explore your top streamed tracks
+              Discover your top streamed tracks
             </Button></Link>
             <Button>Discover your most streamed albums</Button>
             <Button>

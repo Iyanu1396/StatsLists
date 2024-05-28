@@ -50,14 +50,14 @@ function TopArtists() {
     [dispatch, storedToken, token],
   );
 
-  if (isLoading) return <Loader />;
+ 
   return (
     <div className="min-h-screen bg-stone-200">
       <Nav/>
       <h2 className="py-7 tracking-wide text-center font-bebas text-5xl font-medium">
         Top Artists
       </h2>
-      <TopArtistsItems />
+    {isLoading ? <Loader/> :  <TopArtistsItems />}
      <BackToMenu/>
     </div>
   );

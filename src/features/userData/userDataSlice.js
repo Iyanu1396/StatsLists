@@ -4,7 +4,7 @@ export const userDataSlice = createSlice({
   name: "userData",
   initialState: {
     topArtists: null,
-    topTracks:null,
+    topTracks:[],
     topAlbums:null,
     isLoading: false,
   },

@@ -28,11 +28,10 @@ function TopTracks() {
           );
 
           if (!res.ok) {
-            throw new Error("Failed to fetch top artists");
+            throw new Error("Failed to fetch top tracks");
           }
 
           const data = await res.json();
-          console.log(data.items);
 
           dispatch(setIsloading(false));
           dispatch(setTopTracks(data.items));
@@ -48,12 +47,12 @@ function TopTracks() {
 
   if (isLoading) return <Loader />;
   return (
-    <div className="min-h-screen bg-stone-200">
+    <div className="min-h-screen bg-stone-200 py-3">
       <Nav />
       <h2 className="py-7 text-center font-bebas text-5xl font-medium tracking-wide">
         Top Tracks
       </h2>
-      <TopTracksItems />
+      {isLoading ? <Loader /> : <TopTracksItems />}
 
       <BackToMenu />
     </div>
