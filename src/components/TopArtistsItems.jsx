@@ -5,7 +5,7 @@ function TopArtistsItems() {
 
   return (
     <div className="grid-cols-1-xs grid grid-cols-2 gap-5 font-mont  sm:grid-cols-3  md:grid-cols-4  lg:grid-cols-5 ">
-      {topArtists?.map((artist) => (
+      {topArtists?.map((artist , i) => (
         <div
           className="flex flex-col  items-center px-3 tracking-wide"
           key={artist?.name}
@@ -17,7 +17,7 @@ function TopArtistsItems() {
           />
           <div className=" mt-2 text-center">
             <p className="mb-2 font-bold text-green-950">
-              {artist?.name}{" "}
+             {i + 1}. {artist?.name}{" "}
               <a href={artist.href}>
                 <i className="fa-brands fa-spotify pl-1 text-green-500"></i>
               </a>

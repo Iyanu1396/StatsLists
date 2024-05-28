@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import Button from "./Button";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function UserData() {
   const { userData } = useSelector((state) => state.authentication);
@@ -14,7 +14,7 @@ function UserData() {
             src={userData.userAvatar}
             alt=""
           />
-          <div className="py-10 text-center space-y-2">
+          <div className="space-y-2 py-10 text-center">
             <p className="font-bold">
               <i className="fa-solid fa-user pr-1"></i> {userData.userName}
             </p>
@@ -27,18 +27,23 @@ function UserData() {
               {userData.userID}
             </p>
           </div>
-          <div className="flex justify-center items-center flex-col gap-4">
-          <Link to="/top-artists">
-            <Button>
-              Discover your top streamed artists
-            </Button></Link>
-           <Link to="/top-tracks"> <Button>
-              Discover your top streamed tracks
-            </Button></Link>
-            <Button>Discover your most streamed albums</Button>
-            <Button>
-              Create a playlist featuring tracks from your most streamed artists
-            </Button>
+          <div className="flex flex-col items-center justify-center gap-4">
+            <Link to="/top-artists">
+              <Button>Discover your top streamed artists</Button>
+            </Link>
+            <Link to="/top-tracks">
+              {" "}
+              <Button>Discover your top streamed tracks</Button>
+            </Link>
+            <Link to="/top-albums">
+              <Button>Discover your most streamed albums</Button>
+            </Link>
+            <Link to="/create-playlists">
+              <Button>
+                Create a playlist featuring tracks from your most streamed
+                artists
+              </Button>
+            </Link>
           </div>
         </>
       ) : (

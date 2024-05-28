@@ -8,7 +8,6 @@ import {
   setTopArtists,
 } from "../features/userData/userDataSlice";
 import Nav from "../components/Nav";
-import { Link } from "react-router-dom";
 import BackToMenu from "../components/BackToMenu"
 
 
@@ -52,7 +51,7 @@ function TopArtists() {
 
  
   return (
-    <div className="min-h-screen bg-stone-200">
+    <div className="min-h-screen pb-4 bg-stone-200">
       <Nav/>
       <h2 className="py-7 tracking-wide text-center font-bebas text-5xl font-medium">
         Top Artists
