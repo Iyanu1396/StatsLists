@@ -7,10 +7,8 @@ export const userDataSlice = createSlice({
     topTracks: [],
     topAlbums: [],
     playList: {
-      playListName: "My Most Streamed Artists Playlist",
-      playListDescription: "A playlist of my most streamed artists",
       trackUris: [],
-      playListId: "",
+      ID: "",
     },
     isLoading: false,
   },
@@ -24,10 +22,13 @@ export const userDataSlice = createSlice({
     setTopAlbums: (state, action) => {
       state.topAlbums = action.payload;
     },
+    setPlayListID: (state, action) => {
+      state.playList.ID = action.payload;
+    },
     setTrackUris: (state, action) => {
-      state.playList.trackUris.push(
-        ...action.payload.tracks.map((track) => track.uri),
-      );
+      const uniqueUris = new Set(state.playList.trackUris);
+      action.payload.forEach((uri) => uniqueUris.add(uri));
+      state.playList.trackUris = Array.from(uniqueUris);
     },
     setIsloading: (state, action) => {
       state.isLoading = action.payload;
@@ -40,6 +41,7 @@ export const {
   setTopArtists,
   setTopTracks,
   setTopAlbums,
+  setPlayListID,
   setTrackUris,
 } = userDataSlice.actions;
 

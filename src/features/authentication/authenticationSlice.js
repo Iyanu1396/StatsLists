@@ -11,7 +11,7 @@ export const authenticationSlice = createSlice({
     REDIRECT_URI: "http://localhost:5173/app",
     AUTH_ENDPOINT: "https://accounts.spotify.com/authorize",
     RESPONSE_TYPE: "token",
-     SCOPES : 'user-read-private user-read-email user-top-read'
+     SCOPES : 'user-read-private user-read-email user-top-read playlist-modify-public playlist-modify-private'
   },
   reducers: {
     login: (state) => {
