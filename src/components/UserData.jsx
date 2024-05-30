@@ -40,7 +40,7 @@ function UserData() {
             </Link>
             <Link to="/create-playlists">
               <Button>
-                Create a ppersonalized playlists featuring your most-played
+                Create a personalized playlists featuring your most-played
                 tracks on Spotify
               </Button>
             </Link>
