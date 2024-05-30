@@ -32,6 +32,7 @@ function TopTracks() {
           }
 
           const data = await res.json();
+          console.log(data)
 
           dispatch(setIsloading(false));
           dispatch(setTopTracks(data.items));

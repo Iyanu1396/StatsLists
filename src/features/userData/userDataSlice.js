@@ -6,10 +6,6 @@ export const userDataSlice = createSlice({
     topArtists: [],
     topTracks: [],
     topAlbums: [],
-    playList: {
-      trackUris: [],
-      ID: "",
-    },
     isLoading: false,
   },
   reducers: {
@@ -22,27 +18,14 @@ export const userDataSlice = createSlice({
     setTopAlbums: (state, action) => {
       state.topAlbums = action.payload;
     },
-    setPlayListID: (state, action) => {
-      state.playList.ID = action.payload;
-    },
-    setTrackUris: (state, action) => {
-      const uniqueUris = new Set(state.playList.trackUris);
-      action.payload.forEach((uri) => uniqueUris.add(uri));
-      state.playList.trackUris = Array.from(uniqueUris);
-    },
+
     setIsloading: (state, action) => {
       state.isLoading = action.payload;
     },
   },
 });
 
-export const {
-  setIsloading,
-  setTopArtists,
-  setTopTracks,
-  setTopAlbums,
-  setPlayListID,
-  setTrackUris,
-} = userDataSlice.actions;
+export const { setIsloading, setTopArtists, setTopTracks, setTopAlbums } =
+  userDataSlice.actions;
 
 export default userDataSlice.reducer;

@@ -1,46 +1,3 @@
-export async function fetchTopArtistsId(token, storedToken) {
-  try {
-    const res = await fetch(
-      "https://api.spotify.com/v1/me/top/artists?time_range=long_term",
-      {
-        method: "GET",
-        headers: { Authorization: `Bearer ${token || storedToken}` },
-      },
-    );
-
-    if (!res.ok) {
-      throw new Error("Failed to fetch top artists id");
-    }
-
-    let data = await res.json();
-
-    data = data.items.map((artist) => artist.id);
-
-    return data;
-  } catch (err) {
-    console.log(err);
-  }
-}
-
-export async function getTopTracks(artistId, token, storedToken) {
-  const res = await fetch(
-    `https://api.spotify.com/v1/artists/${artistId}/top-tracks`,
-    {
-      params: { market: "US" },
-      headers: {
-        Authorization: `Bearer ${token || storedToken}`,
-        "Content-Type": "application/json",
-      },
-    },
-  );
-
-  let data = await res.json();
-
-  const trackUris = data.tracks.slice(0, 3).map((track) => track.uri);
-
-  return trackUris;
-}
-
 export async function fetchUserID(token, storedToken) {
   try {
     const res = await fetch("https://api.spotify.com/v1/me", {
@@ -87,10 +44,60 @@ export async function addTracksToPlaylists(
 
     const data = await response.json();
 
-   console.log('tracks added')
-
-   return data
+    return data;
   } catch (error) {
     console.error(error);
+  }
+}
+
+export async function fetchTopTracksUris(token, storedToken) {
+  try {
+    const res = await fetch(
+      "https://api.spotify.com/v1/me/top/tracks?time_range=long_term",
+      {
+        method: "GET",
+        headers: { Authorization: `Bearer ${token || storedToken}` },
+      },
+    );
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch top tracks");
+    }
+
+    const data = await res.json();
+    const uris = data.items.map((track) => track.uri);
+    return uris;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export async function createPlayList(userID, token, storedToken) {
+  try {
+    const res = await fetch(
+      `https://api.spotify.com/v1/users/${userID}/playlists`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token || storedToken}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: "My Most Streamed Tracks Playlist",
+          description:
+            "A playlist of my most streamed tracks (created with SpotList by IyanuOluwa)",
+          public: false,
+        }),
+      },
+    );
+
+    if (!res.ok) {
+      throw new Error("Failed to create playlist");
+    }
+
+    const data = res.json();
+    return data;
+  } catch (err) {
+    console.log(err);
   }
 }
