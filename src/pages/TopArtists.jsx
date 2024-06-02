@@ -17,6 +17,10 @@ function TopArtists() {
   const { isLoading } = useSelector((state) => state.userData);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    document.title = 'Spot Lists | Top Artists';
+  }, []);
+
   useEffect(
     function () {
       async function fetchTopArtists() {

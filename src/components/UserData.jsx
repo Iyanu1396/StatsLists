@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import Button from "./Button";
 import { Link } from "react-router-dom";
+import LogOutAuth from "./LogOutAuth";
 
 function UserData() {
   const { userData } = useSelector((state) => state.authentication);
@@ -26,8 +27,10 @@ function UserData() {
               <i className="fa-solid fa-hashtag pr-1"></i>
               {userData.userID}
             </p>
+            <LogOutAuth/>
           </div>
-          <div className="flex flex-col items-center justify-center gap-4">
+          
+          <div className="flex flex-col items-center justify-center gap-6">
             <Link to="/top-artists">
               <Button>Discover your top streamed artists</Button>
             </Link>
@@ -38,13 +41,15 @@ function UserData() {
             <Link to="/top-albums">
               <Button>Discover your most streamed albums</Button>
             </Link>
-            <Link to="/create-playlists">
+            <Link to="/create-playlist">
               <Button>
                 Create a personalized playlists featuring your most-played
                 tracks on Spotify
               </Button>
             </Link>
           </div>
+          
+        
         </>
       ) : (
         ""

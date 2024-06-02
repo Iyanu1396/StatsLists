@@ -14,7 +14,7 @@ function App() {
       element: <HomePage />,
     },
     {
-      path: "/app",
+      path: "/menu",
       element: <LoggedInPage />,
     },
     {
@@ -30,7 +30,7 @@ function App() {
       element: <TopAlbums />,
     },
     {
-      path: "/create-playlists",
+      path: "/create-playlist",
       element: <CreatePlaylist />,
     },
   ]);

@@ -13,6 +13,10 @@ function TopTracks() {
   const { isLoading } = useSelector((state) => state.userData);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    document.title = 'Spot Lists | Top Tracks';
+  }, []);
+
   useEffect(
     function () {
       async function fetchTopTracks() {
@@ -32,7 +36,7 @@ function TopTracks() {
           }
 
           const data = await res.json();
-          console.log(data)
+     
 
           dispatch(setIsloading(false));
           dispatch(setTopTracks(data.items));

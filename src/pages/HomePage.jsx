@@ -7,7 +7,7 @@ function HomePage() {
         Welcome To Spot Lists
         <span>
           <i className="fa-brands fa-spotify pl-3 text-green-500"></i>
-        </span>{" "}
+        </span>
       </h1>
       <p className=" animate__animated animate__bounceInLeft max-w-[700px] pb-7 text-center font-mont  text-lg font-[550] text-green-950">
         Discover a new way to enjoy your favorite music with Spot Lists. Our app

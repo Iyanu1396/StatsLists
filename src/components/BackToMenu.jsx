@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom"
 
-function BackToMenu() {
+function BackToMenu({handleResetPlayList}) {
     return (
-        <Link
+        <Link onClick={handleResetPlayList}
         className="px-4  font-mono text-2xl font-bold text-stone-900 hover:text-green-700 active:text-green-700"
-        to="/app"
+        to="/menu"
       >
         &larr; Back to menu
       </Link>
