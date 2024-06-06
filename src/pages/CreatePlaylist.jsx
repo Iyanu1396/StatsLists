@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchUserID,
@@ -18,6 +18,7 @@ import BackToMenu from "../components/BackToMenu";
 const storedToken = window.localStorage.getItem("token");
 import Confetti from "react-confetti";
 import { useWindowSize } from "react-use";
+import { useEffect } from "react";
 
 function CreatePlaylist() {
   const { token } = useSelector((state) => state.authentication);
@@ -26,7 +27,7 @@ function CreatePlaylist() {
 
   const dispatch = useDispatch();
 
-  const { width, height } = useWindowSize();
+  const { width } = useWindowSize();
 
   useEffect(() => {
     document.title = "Stats Lists | Create Playlist";
