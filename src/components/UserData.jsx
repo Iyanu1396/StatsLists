@@ -30,7 +30,7 @@ function UserData() {
             <LogOutAuth/>
           </div>
           
-          <div className="flex flex-col items-center justify-center gap-6">
+          <div className="flex flex-col items-center justify-center gap-4">
             <Link to="/top-artists">
               <Button>Discover your top streamed artists</Button>
             </Link>
