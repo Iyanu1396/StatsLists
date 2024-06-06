@@ -10,9 +10,7 @@ function HomePage() {
         </span>
       </h1>
       <p className="leading-lose animate__animated animate__bounceInLeft max-w-[700px] pb-7 text-center font-mont  text-lg font-[550] text-green-950">
-        Discover a new way to enjoy your favorite music and view your Spotify stats with Stats Lists. Our app
-        creates personalized playlists featuring your most-played tracks on
-        Spotify, ensuring you always have the perfect soundtrack for any moment.
+      Discover a new way to enjoy your favorite music and view your Spotify stats with Stats Lists. Our app provides detailed insights into your listening habits and creates personalized playlists featuring your most-played tracks on Spotify.
       </p>
       <LoginAuth />
     </div>
