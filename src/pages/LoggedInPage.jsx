@@ -13,7 +13,7 @@ function LoggedInPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    document.title = 'Spot Lists | Menu';
+    document.title = 'Stats Lists | Menu';
   }, []);
 
   useEffect(() => {

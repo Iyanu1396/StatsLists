@@ -14,7 +14,7 @@ function TopTracks() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    document.title = 'Spot Lists | Top Tracks';
+    document.title = 'Stats Lists | Top Tracks';
   }, []);
 
   useEffect(

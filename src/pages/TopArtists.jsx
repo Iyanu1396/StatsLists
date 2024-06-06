@@ -18,7 +18,7 @@ function TopArtists() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    document.title = 'Spot Lists | Top Artists';
+    document.title = 'Stats Lists | Top Artists';
   }, []);
 
   useEffect(

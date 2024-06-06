@@ -29,7 +29,7 @@ function CreatePlaylist() {
   const { width, height } = useWindowSize();
 
   useEffect(() => {
-    document.title = "Spot Lists | Create Playlist";
+    document.title = "Stats Lists | Create Playlist";
   }, []);
 
   async function handleCreatePlaylist() {
@@ -74,7 +74,7 @@ function CreatePlaylist() {
                 Create Your Perfect Playlist
               </h1>
               <p className="text-green-900">
-                Welcome to Spot Lists! Let&apos;s craft a playlist that fits
+                Welcome to Stats Lists! Let&apos;s craft a playlist that fits
                 your unique taste.
               </p>
 
