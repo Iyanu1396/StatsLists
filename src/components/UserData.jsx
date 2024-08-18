@@ -6,6 +6,10 @@ import LogOutAuth from "./LogOutAuth";
 function UserData() {
   const { userData } = useSelector((state) => state.authentication);
 
+
+
+
+
   return (
     <div className="flex flex-col items-center justify-center py-10 font-mont text-green-950">
       {userData ? (

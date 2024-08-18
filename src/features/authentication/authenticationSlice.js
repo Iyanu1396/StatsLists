@@ -8,7 +8,7 @@ export const authenticationSlice = createSlice({
     isLoading: false,
     token: "",
     CLIENT_ID: "036356fa84574cff91cb6272bb50ed3e",
-    REDIRECT_URI: "https://stats-lists.vercel.app/menu",
+    REDIRECT_URI: "http://localhost:5173/menu",
     AUTH_ENDPOINT: "https://accounts.spotify.com/authorize",
     RESPONSE_TYPE: "token",
      SCOPES : 'user-read-private user-read-email user-top-read playlist-modify-public playlist-modify-private'

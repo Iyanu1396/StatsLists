@@ -59,7 +59,8 @@ function LoggedInPage() {
           const userName = data.display_name;
           const userEmail = data.email;
           const userID = data.id;
-          const userAvatar = data.images[1].url;
+          const userAvatar = data?.images[1]?.url;
+
 
           dispatch(setIsloading(false));
           dispatch(authenticateUser(userName, userEmail, userID, userAvatar));
